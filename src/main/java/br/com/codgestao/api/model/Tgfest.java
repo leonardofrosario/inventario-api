@@ -3,10 +3,9 @@ package br.com.codgestao.api.model;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+
 
 @Entity
-@Table(name = "TGFEST", schema = "BRNTST")
 public class Tgfest {
 
     @EmbeddedId
@@ -15,7 +14,6 @@ public class Tgfest {
     @Column(name = "ESTOQUE", columnDefinition = "FLOAT")
     private Double estoque;
 
-    // 🔹 Getters compatíveis com o service
     public Long getProduto() {
         return id != null ? id.getCodProd() : null;
     }
@@ -33,7 +31,6 @@ public class Tgfest {
         this.estoque = estoque;
     }
 
-    // 🔹 Getters e setters diretos para compatibilidade
     public TgfestId getId() {
         return id;
     }
