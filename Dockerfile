@@ -9,10 +9,13 @@ COPY mvnw .
 COPY .mvn .mvn
 
 # Dá permissão de execução no mvnw
-RUN chmod +x ./mvnw
+RUN chmod +x mvnw
 
 # Copia o restante do projeto
 COPY . .
+
+# Garante que mesmo se o Git não tiver salvo a permissão, o mvnw seja executável
+RUN chmod +x mvnw
 
 # Faz o build (sem rodar testes para acelerar deploy)
 RUN ./mvnw clean package -DskipTests
