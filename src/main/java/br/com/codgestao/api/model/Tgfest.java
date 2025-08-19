@@ -2,6 +2,10 @@ package br.com.codgestao.api.model;
 
 import javax.persistence.*;
 
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 @Entity
 @Table(name = "TGFEST", schema = "BRNTST")
 public class Tgfest {
