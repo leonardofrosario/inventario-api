@@ -1,5 +1,6 @@
 package br.com.codgestao.api.service;
 
+import br.com.codgestao.api.dto.EstoqueDTO;
 import br.com.codgestao.api.model.Tgfest;
 import br.com.codgestao.api.model.TgfestId;
 import br.com.codgestao.api.repository.TgfestRepository;
@@ -15,6 +16,16 @@ public class EstoqueService {
 
     public EstoqueService(TgfestRepository repository) {
         this.repository = repository;
+    }
+
+    // 🔎 Consulta completa com JOIN (DTO)
+    public List<EstoqueDTO> listarEstoque() {
+        return repository.consultarEstoqueCompleto();
+    }
+
+    // 🔎 Consulta com filtros opcionais (codProd, descrProd, referencia, refForn)
+    public List<EstoqueDTO> consultarEstoque(Long codProd, String descrProd, String referencia, String refForn) {
+        return repository.consultarEstoque(codProd, descrProd, referencia, refForn);
     }
 
     // 🔹 Buscar estoque por produto (todas as empresas/locais)

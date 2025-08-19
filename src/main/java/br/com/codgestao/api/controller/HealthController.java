@@ -10,3 +10,4 @@ public class HealthController {
         return "API rodando com sucesso 🚀";
     }
 }
+ 
