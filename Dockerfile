@@ -1,7 +1,7 @@
 # ===============================
 # Etapa 1: Build da aplicação
 # ===============================
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+FROM maven:3.9.6-eclipse-temurin-8 AS build
 WORKDIR /app
 
 # Copia apenas os arquivos do wrapper primeiro
@@ -9,13 +9,10 @@ COPY mvnw .
 COPY .mvn .mvn
 
 # Dá permissão de execução no mvnw
-RUN chmod +x mvnw
+RUN chmod +x ./mvnw
 
 # Copia o restante do projeto
 COPY . .
-
-# Garante que mesmo se o Git não tiver salvo a permissão, o mvnw seja executável
-RUN chmod +x mvnw
 
 # Faz o build (sem rodar testes para acelerar deploy)
 RUN ./mvnw clean package -DskipTests
@@ -23,7 +20,7 @@ RUN ./mvnw clean package -DskipTests
 # ===============================
 # Etapa 2: Executar a aplicação
 # ===============================
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:8-jdk
 WORKDIR /app
 
 # Copia apenas o JAR da etapa anterior

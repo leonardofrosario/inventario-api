@@ -1,10 +1,9 @@
 package br.com.codgestao.api.model;
 
-import javax.persistence.*;
-
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "TGFEST", schema = "BRNTST")
