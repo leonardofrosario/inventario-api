@@ -18,10 +18,10 @@ public interface TgfestRepository extends JpaRepository<Tgfest, TgfestId> {
 
     Optional<Tgfest> findByIdCodProdAndIdCodEmpAndIdCodLocal(Long codProd, Long codEmp, Long codLocal);
 
-    // 🔎 Consulta completa com JOIN (DTO)
+    // 🔎 Consulta completa
     @Query("SELECT new br.com.codgestao.api.dto.EstoqueDTO(" +
            "p.codProd, p.descrProd, p.codVol, p.referencia, p.refForn, p.localizacao, " +
-           "e.codEmp, emp.razaoSocial, e.codLocal, e.estoque, e.reservado, e.controle, e.dtFabricacao, e.dtVal) " +
+           "e.id.codEmp, emp.razaoSocial, e.id.codLocal, e.estoque, e.reservado, e.controle, e.dtFabricacao, e.dtVal) " +
            "FROM Tgfest e " +
            "JOIN Tgfpro p ON p.codProd = e.id.codProd " +
            "JOIN Tsiemp emp ON emp.codEmp = e.id.codEmp")
@@ -30,7 +30,7 @@ public interface TgfestRepository extends JpaRepository<Tgfest, TgfestId> {
     // 🔎 Consulta dinâmica com filtros
     @Query("SELECT new br.com.codgestao.api.dto.EstoqueDTO(" +
            "p.codProd, p.descrProd, p.codVol, p.referencia, p.refForn, p.localizacao, " +
-           "e.codEmp, emp.razaoSocial, e.codLocal, e.estoque, e.reservado, e.controle, e.dtFabricacao, e.dtVal) " +
+           "e.id.codEmp, emp.razaoSocial, e.id.codLocal, e.estoque, e.reservado, e.controle, e.dtFabricacao, e.dtVal) " +
            "FROM Tgfest e " +
            "JOIN Tgfpro p ON p.codProd = e.id.codProd " +
            "JOIN Tsiemp emp ON emp.codEmp = e.id.codEmp " +

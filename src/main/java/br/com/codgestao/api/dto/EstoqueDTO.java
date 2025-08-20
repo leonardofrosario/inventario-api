@@ -19,6 +19,27 @@ public class EstoqueDTO {
     private LocalDate dtFabricacao;
     private LocalDate dtVal;
 
+    // 🔹 Construtor usado pelo JPQL
+    public EstoqueDTO(Long codProd, String descrProd, String codVol, String referencia, String refForn,
+                      String localizacao, Long codEmp, String razaoSocial, Long codLocal, BigDecimal estoque,
+                      BigDecimal reservado, String controle, LocalDate dtFabricacao, LocalDate dtVal) {
+        this.codProd = codProd;
+        this.descrProd = descrProd;
+        this.codVol = codVol;
+        this.referencia = referencia;
+        this.refForn = refForn;
+        this.localizacao = localizacao;
+        this.codEmp = codEmp;
+        this.razaoSocial = razaoSocial;
+        this.codLocal = codLocal;
+        this.estoque = estoque;
+        this.reservado = reservado;
+        this.controle = controle;
+        this.dtFabricacao = dtFabricacao;
+        this.dtVal = dtVal;
+    }
+
+
     // Getters e Setters
     public Long getCodProd() { return codProd; }
     public void setCodProd(Long codProd) { this.codProd = codProd; }

@@ -1,49 +1,78 @@
 package br.com.codgestao.api.model;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
-
-@Entity
+@Entity(name = "Tgfest")
+@Table(name = "tgfest")
 public class Tgfest {
-
     @EmbeddedId
     private TgfestId id;
 
-    @Column(name = "ESTOQUE", columnDefinition = "FLOAT")
-    private Double estoque;
+    @Column(name = "estoque")
+    private BigDecimal estoque;
 
-    public Long getProduto() {
-        return id != null ? id.getCodProd() : null;
-    }
+    @Column(name = "reservado")
+    private BigDecimal reservado;
 
-    public void setProduto(Long codProd) {
-        if (id == null) id = new TgfestId();
-        id.setCodProd(codProd);
-    }
+    @Column(name = "controle")
+    private String controle;
 
-    public Double getQuantidade() {
-        return estoque;
-    }
+    @Column(name = "dtfabricacao")
+    private LocalDate dtFabricacao;
 
-    public void setQuantidade(Double estoque) {
-        this.estoque = estoque;
-    }
+    @Column(name = "dtval")
+    private LocalDate dtVal;
 
+	
+    
     public TgfestId getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(TgfestId id) {
-        this.id = id;
-    }
+	public void setId(TgfestId id) {
+		this.id = id;
+	}
 
-    public Double getEstoque() {
-        return estoque;
-    }
+	public BigDecimal getEstoque() {
+		return estoque;
+	}
 
-    public void setEstoque(Double estoque) {
-        this.estoque = estoque;
-    }
+	public void setEstoque(BigDecimal estoque) {
+		this.estoque = estoque;
+	}
+
+	public BigDecimal getReservado() {
+		return reservado;
+	}
+
+	public void setReservado(BigDecimal reservado) {
+		this.reservado = reservado;
+	}
+
+	public String getControle() {
+		return controle;
+	}
+
+	public void setControle(String controle) {
+		this.controle = controle;
+	}
+
+	public LocalDate getDtFabricacao() {
+		return dtFabricacao;
+	}
+
+	public void setDtFabricacao(LocalDate dtFabricacao) {
+		this.dtFabricacao = dtFabricacao;
+	}
+
+	public LocalDate getDtVal() {
+		return dtVal;
+	}
+
+	public void setDtVal(LocalDate dtVal) {
+		this.dtVal = dtVal;
+	}
+
 }

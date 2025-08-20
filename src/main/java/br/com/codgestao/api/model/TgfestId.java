@@ -1,27 +1,47 @@
 package br.com.codgestao.api.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 
 @Embeddable
 public class TgfestId implements Serializable {
 
-    private static final long serialVersionUID = 1L; // 🔹 adicionado
+    private static final long serialVersionUID = 1L;
 
-    @Column(name = "CODEMP")
-    private Long codEmp;
-
-    @Column(name = "CODLOCAL")
-    private Long codLocal;
-
-    @Column(name = "CODPROD")
+    @Column(name = "codprod")
     private Long codProd;
 
-    @Column(name = "CONTROLE")
-    private String controle;
+    @Column(name = "codemp")
+    private Long codEmp;
+
+    @Column(name = "codlocal")
+    private Long codLocal;
+
+    // equals & hashCode
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TgfestId)) return false;
+        TgfestId that = (TgfestId) o;
+        return Objects.equals(codProd, that.codProd) &&
+               Objects.equals(codEmp, that.codEmp) &&
+               Objects.equals(codLocal, that.codLocal);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codProd, codEmp, codLocal);
+    }
+
+    // Getters e Setters
+    public Long getCodProd() {
+        return codProd;
+    }
+
+    public void setCodProd(Long codProd) {
+        this.codProd = codProd;
+    }
 
     public Long getCodEmp() {
         return codEmp;
@@ -37,38 +57,5 @@ public class TgfestId implements Serializable {
 
     public void setCodLocal(Long codLocal) {
         this.codLocal = codLocal;
-    }
-
-    public Long getCodProd() {
-        return codProd;
-    }
-
-    public void setCodProd(Long codProd) {
-        this.codProd = codProd;
-    }
-
-    public String getControle() {
-        return controle;
-    }
-
-    public void setControle(String controle) {
-        this.controle = controle;
-    }
-
-    // 🔹 Equals e hashCode obrigatórios
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof TgfestId)) return false;
-        TgfestId that = (TgfestId) o;
-        return Objects.equals(codEmp, that.codEmp) &&
-               Objects.equals(codLocal, that.codLocal) &&
-               Objects.equals(codProd, that.codProd) &&
-               Objects.equals(controle, that.controle);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(codEmp, codLocal, codProd, controle);
     }
 }
