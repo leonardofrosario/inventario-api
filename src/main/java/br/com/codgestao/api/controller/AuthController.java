@@ -19,15 +19,13 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
         if (authService.login(request)) {
-            return ResponseEntity.ok(new LoginResponse(
-                    request.getUsername(),
-                    "Login realizado com sucesso ✅"
-            ));
+            return ResponseEntity.ok(
+                new LoginResponse("success", "Login realizado com sucesso ✅", request.getUsername())
+            );
         }
-        return ResponseEntity.status(401).body(new LoginResponse(
-                request.getUsername(),
-                "Usuário ou senha inválidos ❌"
-        ));
+        return ResponseEntity.status(401).body(
+            new LoginResponse("error", "Usuário ou senha inválidos ❌", request.getUsername())
+        );
     }
 }
 
